@@ -12,6 +12,13 @@ export const quiz ={
             question: "Quel est le nom de la maison de Draco Malfoy?",
             answers: ["Gryffondor", "Poufsouffle", "Serdaigle", "Serpentard"],
             correct: "Serpentard"
+        },
+        {
+            id:3,
+            question: "Quel est le nom de la maison de Draco Malfoy?",
+            answers: ["Gryffondor", "Poufsouffle", "Serdaigle", "Serpentard"],
+            correct: "Serpentard"
         }
+
     ]
 }
