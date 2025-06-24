@@ -18,6 +18,8 @@ export default function page(){
 const {questions} = quiz
 const {question, answers, correct} = questions[activeQuestion]
 
+
+
     return(
         <div>
             <Header/>
@@ -31,7 +33,12 @@ const {question, answers, correct} = questions[activeQuestion]
         <section>
             {!isShowResult ? (<div>
                 <h3>{questions[activeQuestion].question}</h3>
-                
+                {answers.map((answer, idx) =>(
+                    <li key={idx} 
+                    className={selectedAnswerIndex === idx ? 'li-selected' : 'li-hover'}>
+                        <span>{answer}</span>
+                    </li>
+                ))}
                  </div>) : (<div> </div>)}
         </section>
         </div>
