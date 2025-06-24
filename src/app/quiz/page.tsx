@@ -90,6 +90,7 @@ const nextQuestion = () => {
                         <p>Score: <span>{result.score}</span></p>
                         <p>Reponse correct: <span>{result.correctAnswers}</span></p>
                         <p>Reponse fausse: <span>{result.wrongAnswers}</span></p>
+                        <button onClick={()=> window.location.reload()}>Rejouer le quiz</button>
                     </div>)}
         </section>
         </div>
