@@ -24,12 +24,15 @@ const {question, answers, correct} = questions[activeQuestion]
         <p>Quiz Page</p>
         <section>
             <h2>
-                Question: {activeQuestion}
+                Question: {activeQuestion + 1}
                 <span>/{questions.length}</span>
             </h2>
         </section>
         <section>
-            {!isShowResult ? (<div> </div>) : (<div> </div>)}
+            {!isShowResult ? (<div>
+                <h3>{questions[activeQuestion].question}</h3>
+                
+                 </div>) : (<div> </div>)}
         </section>
         </div>
     )
