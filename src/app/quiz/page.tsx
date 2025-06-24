@@ -5,8 +5,8 @@ import {quiz} from "./data"
 
 export default function page(){
     const [activeQuestion, setActiveQuestion]= useState(0)
-    const [selectedAnswer, setSelectedAnswer]= useState('')
-    const [ischecked, setIsChecked]= useState(false)
+    const [selectedAnswer, setSelectedAnswer]= useState(false)
+    const [isChecked, setIsChecked]= useState(false)
     const [selectedAnswerIndex, setSelectedAnswerIndex]= useState(null)
     const [isShowResult, setIsShowResult] =useState(false)
     const [result, setResult] =useState({
@@ -18,7 +18,40 @@ export default function page(){
 const {questions} = quiz
 const {question, answers, correct} = questions[activeQuestion]
 
+const onAnswerSelected = (answer, idx) => {
+    setIsChecked(true)
+    setSelectedAnswerIndex(idx)
+    if(answer === correct) {
+        setSelectedAnswer(true)
+        console.log('true')
+    } else {
+        setSelectedAnswer(false)
+        console.log('false')
+    }
 
+}
+
+const nextQuestion = () => {
+    setSelectedAnswerIndex(null)
+    setResult((prev) =>
+        selectedAnswer ? 
+        {
+            ...prev,
+            score: prev.score + 5,
+            correctAnswers: prev.correctAnswers +1
+        } : {
+            ...prev,
+            wrongAnswers: prev.wrongAnswers + 1,
+        }
+    );
+    if (activeQuestion !== questions.length -1) {
+        setActiveQuestion((prev) => prev +1)
+    } else {
+        setActiveQuestion(0)
+        setIsShowResult(true)
+    }
+    setIsChecked(false)
+}
 
     return(
         <div>
@@ -35,11 +68,29 @@ const {question, answers, correct} = questions[activeQuestion]
                 <h3>{questions[activeQuestion].question}</h3>
                 {answers.map((answer, idx) =>(
                     <li key={idx} 
+                    onClick={() => onAnswerSelected(answer, idx)}
                     className={selectedAnswerIndex === idx ? 'li-selected' : 'li-hover'}>
                         <span>{answer}</span>
                     </li>
                 ))}
-                 </div>) : (<div> </div>)}
+                {isChecked ? (
+                    <button onClick={nextQuestion}>
+                        {activeQuestion === questions.length -1 ? 'Terminer' : 'Suivante'}
+                    </button>
+                ) : (
+                    <button onClick={nextQuestion} disabled>
+                        {activeQuestion === questions.length -1 ? 'Terminer' : 'Suivante'}
+                    </button>
+                )}
+                 </div>) : (
+                    <div> 
+                        <h3>Resultat</h3>
+                        <h3>Total {(result.score /15) *100}%</h3>
+                        <p>Questions: <span>{questions.length}</span></p>
+                        <p>Score: <span>{result.score}</span></p>
+                        <p>Reponse correct: <span>{result.correctAnswers}</span></p>
+                        <p>Reponse fausse: <span>{result.wrongAnswers}</span></p>
+                    </div>)}
         </section>
         </div>
     )
