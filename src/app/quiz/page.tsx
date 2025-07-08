@@ -33,7 +33,7 @@ export default function Page() {
         : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
     );
     if (activeQuestion !== questions.length - 1) {
-      setActiveQuestion((prev) => prev + 1);
+      setActiveQuestion((prev) => prev + 1); 
     } else {
       setActiveQuestion(0);
       setIsShowResult(true);
@@ -80,7 +80,7 @@ export default function Page() {
           <section className={styles.result}>
             <h3 className={styles.resultTitle}>Résultats</h3>
             <p className={styles.resultItem}>
-              Total: <span>{(result.score / 15) * 100}%</span>
+              Total: <span>{(result.score / 50) * 100}%</span>
             </p>
             <p className={styles.resultItem}>
               Questions: <span>{questions.length}</span>
@@ -88,7 +88,7 @@ export default function Page() {
             <p className={styles.resultItem}>
               Réponses correctes: <span>{result.correctAnswers}</span>
             </p>
-            <p className={styles.resultItem}>
+            <p className={styles.resultfalse}>
               Réponses fausses: <span>{result.wrongAnswers}</span>
             </p>
             <button
