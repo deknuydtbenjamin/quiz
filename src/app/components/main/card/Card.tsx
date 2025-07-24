@@ -8,7 +8,13 @@ export default function Card() {
       {/* <Header /> */}
       <div className={styles.card}>
         <h3 className={styles.title}>Harry Potter</h3>
-        <Link href="/quiz">
+        <Link href="/quiz/harrypotter">
+          <button className={styles.button}>Start</button>
+        </Link>
+      </div>
+      <div className={styles.card}>
+        <h3 className={styles.title}>le seigneur des anneaux</h3>
+        <Link href="/quiz/seigneuranneaux">
           <button className={styles.button}>Start</button>
         </Link>
       </div>
