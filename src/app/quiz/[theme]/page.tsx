@@ -5,12 +5,18 @@ import Header from '../../components/header/Header';
 
 import { quiz as hpQuiz } from '../data/harrypotter';
 import { quiz as lotrQuiz } from '../data/seigneuranneaux';
+import {quiz as avatarQuiz} from '../data/avatar'
 
 import styles from './quiz.module.css'; 
 
 export default function Page() {
   const { theme } = useParams();
-  const quiz = theme === 'harrypotter' ? hpQuiz : lotrQuiz;
+  const quiz =
+  theme === 'harrypotter'
+    ? hpQuiz
+    : theme === 'seigneuranneaux'
+    ? lotrQuiz
+    : avatarQuiz;
 
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(false);
