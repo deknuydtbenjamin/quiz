@@ -18,6 +18,12 @@ export default function Card() {
           <button className={styles.button}>Start</button>
         </Link>
       </div>
+      <div className={styles.card}>
+        <h3 className={styles.title}>Avatar</h3>
+        <Link href="/quiz/avatar">
+          <button className={styles.button}>Start</button>
+        </Link>
+      </div>
     </div>
   );
 }
