@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-right: 40px;
 }
 
 .answerItem {
@@ -56,6 +57,11 @@
   padding: 12px;
 }
 
+.answerItem,
+.selected {
+  width: 100%;
+  box-sizing: border-box;
+}
 
 .button {
   display: block;
